@@ -41,20 +41,10 @@ case "$1" in
     if [ -f "$MEMORY_FILE" ]; then
       MEMORY=$(cat "$MEMORY_FILE")
     fi
-    CURRENT_TIME=$(date +"%A, %d %B %Y %H:%M"); HISTORY="You are $AGENT_NAME, a helpful AI assistant. The current date and time is $CURRENT_TIME.\n${MEMORY}\n"
+    HISTORY="You are $AGENT_NAME, a helpful AI assistant.\n${MEMORY}\n"
     while true; do
       read -p "You: " input
-      if [[ "$input" == /hermes* ]]; then
-  query="${input#/hermes }"
-  bash "$(dirname "$0")/hermes.sh" "$query"
-  continue
-fi
-if [[ "$input" == /athena* ]]; then
-  query="${input#/athena }"
-  bash "$(dirname "$0")/athena.sh" "$query"
-  continue
-fi
-if [ "$input" = "/bye" ]; then
+      if [ "$input" = "/bye" ]; then
         echo "Chat ended." >> $LOGFILE
         break
       fi

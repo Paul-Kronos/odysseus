@@ -1,0 +1,6 @@
+Prompt: What is the capital of France?
+AI: The capital of France is Paris.
+Prompt: What is the capital of Germany?
+AI: The capital of Germany is Berlin.
+Prompt: What is the capital of Germany?
+AI: The capital of Germany is Berlin.

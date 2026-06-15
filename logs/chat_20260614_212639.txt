@@ -1,0 +1,2 @@
+Injected: What is the capital of Spain?
+AI: The capital of Spain is Madrid.

@@ -1,0 +1,15 @@
+Chat started: 20260614_201815
+You: heloo
+AI: Hello! How can I assist you today?
+You: exit
+AI: It seems like you're trying to leave. Is there anything else I can help you[3D[K
+you with before you go?
+You: exit
+AI: It seems like you're trying to leave the conversation. If you need any help[4D[K
+help or have questions, feel free to ask, and I'll do my best to assist you[3D[K
+you. Otherwise, it was nice chatting with you! Have a great day!
+You: exit
+AI: It looks like you're trying to exit the conversation. If you'd like to cont[4D[K
+continue, I can keep the chat going or we can start a new topic. Let me kno[3D[K
+know how I can assist you!
+Chat ended.

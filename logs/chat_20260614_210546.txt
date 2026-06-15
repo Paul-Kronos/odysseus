@@ -1,0 +1,2 @@
+File: test.txt
+AI: The capital of France is Paris.
