@@ -41,7 +41,7 @@ case "$1" in
     if [ -f "$MEMORY_FILE" ]; then
       MEMORY=$(cat "$MEMORY_FILE")
     fi
-    HISTORY="You are $AGENT_NAME, a helpful AI assistant.\n${MEMORY}\n"
+    CURRENT_TIME=$(date +"%A, %d %B %Y %H:%M"); HISTORY="You are $AGENT_NAME, a helpful AI assistant. The current date and time is $CURRENT_TIME.\n${MEMORY}\n"
     while true; do
       read -p "You: " input
       if [ "$input" = "/bye" ]; then
