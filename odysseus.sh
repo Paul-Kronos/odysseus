@@ -8,6 +8,7 @@ mkdir -p $LOG_DIR
 
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 LOGFILE="$LOG_DIR/chat_$TIMESTAMP.txt"
+MEMORY_FILE="./memory.txt"
 
 show_menu() {
   echo ""
@@ -36,12 +37,22 @@ show_menu() {
 case "$1" in
   --chat)
     echo "Chat started: $TIMESTAMP" > $LOGFILE
-    HISTORY="You are $AGENT_NAME, a helpful AI assistant.\n"
+    MEMORY=""
+    if [ -f "$MEMORY_FILE" ]; then
+      MEMORY=$(cat "$MEMORY_FILE")
+    fi
+    HISTORY="You are $AGENT_NAME, a helpful AI assistant.\n${MEMORY}\n"
     while true; do
       read -p "You: " input
       if [ "$input" = "/bye" ]; then
         echo "Chat ended." >> $LOGFILE
         break
+      fi
+      if [[ "$input" == /remember* ]]; then
+        mem="${input#/remember }"
+        echo "$mem" >> "$MEMORY_FILE"
+        echo "Remembered: $mem"
+        continue
       fi
       echo "You: $input" >> $LOGFILE
       HISTORY="${HISTORY}User: ${input}\n"
