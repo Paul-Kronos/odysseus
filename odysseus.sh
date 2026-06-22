@@ -41,20 +41,21 @@ case "$1" in
     if [ -f "$MEMORY_FILE" ]; then
       MEMORY=$(cat "$MEMORY_FILE")
     fi
-    CURRENT_TIME=$(date +"%A, %d %B %Y %H:%M"); HISTORY="You are $AGENT_NAME, a helpful AI assistant. The current date and time is $CURRENT_TIME.\n${MEMORY}\n"
+    CURRENT_TIME=$(date +"%A, %d %B %Y %H:%M")
+    HISTORY="You are $AGENT_NAME, a helpful AI assistant. The current date and time is $CURRENT_TIME.\n${MEMORY}\n"
     while true; do
       read -p "You: " input
       if [[ "$input" == /hermes* ]]; then
-  query="${input#/hermes }"
-  bash "$(dirname "$0")/hermes.sh" "$query"
-  continue
-fi
-if [[ "$input" == /athena* ]]; then
-  query="${input#/athena }"
-  bash "$(dirname "$0")/athena.sh" "$query"
-  continue
-fi
-if [ "$input" = "/bye" ]; then
+        query="${input#/hermes }"
+        bash "$(dirname "$0")/hermes.sh" "$query"
+        continue
+      fi
+      if [[ "$input" == /athena* ]]; then
+        query="${input#/athena }"
+        bash "$(dirname "$0")/athena.sh" "$query"
+        continue
+      fi
+      if [ "$input" = "/bye" ]; then
         echo "Chat ended." >> $LOGFILE
         break
       fi
@@ -116,6 +117,10 @@ if [ "$input" = "/bye" ]; then
     echo "$response"
     echo "Injected: $2" >> $LOGFILE
     echo "AI: $response" >> $LOGFILE
+    ;;
+  --analyse)
+    shift
+    bash "$(dirname "$0")/analyse.sh" "$@"
     ;;
   --model)
     if [ -z "$2" ]; then
