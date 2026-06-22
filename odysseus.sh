@@ -20,7 +20,8 @@ show_menu() {
   echo " 3) Run Batch File"
   echo " 4) Inject a Prompt"
   echo " 5) Switch Model"
-  echo " 6) Exit"
+  echo " 6) Analyse Files"
+  echo " 7) Exit"
   echo "==============================="
   read -p "Choose an option: " choice
   case "$choice" in
@@ -29,7 +30,8 @@ show_menu() {
     3) read -p "Batch file path: " f; bash "$0" --batch "$f" ;;
     4) read -p "Prompt: " p; bash "$0" --inject "$p" ;;
     5) read -p "Model name: " m; bash "$0" --model "$m" ;;
-    6) echo "Goodbye!"; exit 0 ;;
+    6) read -p "Files (space separated): " files; bash "$0" --analyse $files ;;
+    7) echo "Goodbye!"; exit 0 ;;
     *) echo "Invalid option." ;;
   esac
 }
